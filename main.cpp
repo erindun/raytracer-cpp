@@ -1,12 +1,12 @@
 #include <iostream>
 #include "Vector.h"
-#include "ray.h"
+#include "sphere.h"
 using namespace chromeball;
 
 int main() {
     Vector v;
     Vector w;
-    Ray r(v, w);
-    std::cout << r.get_origin().getX() << std::endl;
+    Color c;
+    Sphere(v, 0.0, c);
 }
 

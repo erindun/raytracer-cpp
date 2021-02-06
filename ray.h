@@ -7,7 +7,7 @@ class Ray {
         chromeball::Vector direction;
 
     public:
-        Ray(chromeball::Vector o, chromeball::Vector d);
+        Ray(const chromeball::Vector& o, const chromeball::Vector& d);
         chromeball::Vector get_origin();
         chromeball::Vector get_direction();
 };
