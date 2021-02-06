@@ -9,6 +9,6 @@ private:
   float radius;
 
 public:
-  Sphere(const chromeball::Vector& ctr, float r, const chromeball::Color& c);
-  std::vector<float> intersect(const Ray& r) const;
+  Sphere(const chromeball::Vector &ctr, float r, const chromeball::Color &c);
+  float intersect(const Ray &r) const;
 };
