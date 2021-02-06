@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector.h"
 #include "scene_object.h"
+#include <vector>
 
 class Sphere : public SceneObject {
 private:
@@ -9,5 +10,5 @@ private:
 
 public:
   Sphere(const chromeball::Vector& ctr, float r, const chromeball::Color& c);
-  float intersect(const Ray& r) const;
+  std::vector<float> intersect(const Ray& r) const;
 };
