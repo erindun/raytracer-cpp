@@ -5,11 +5,11 @@
 #include <vector>
 using namespace chromeball;
 
-Sphere::Sphere(const Vector &ctr, float r, const Color &c)
-    : SceneObject(c), center(ctr), radius(r) {}
+Sphere::Sphere(const Vector &o, float r, const Color &c)
+    : SceneObject(c), origin(o), radius(r) {}
 
 float Sphere::intersect(const Ray &r) const {
-  Vector a = r.get_origin() - this->center;
+  Vector a = r.get_origin() - this->origin;
   float b = dot(a, r.get_direction());
   float c = dot(a, a);
   float f = pow(b, 2) + pow(this->radius, 2) - c;

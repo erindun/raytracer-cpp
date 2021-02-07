@@ -2,7 +2,7 @@
 #include "Vector.h"
 using namespace chromeball;
 
-/* Calculates the dot product of two vectors. */
+/** Calculates the dot product of two vectors. */
 float dot(const Vector &a, const Vector &b) {
   float x = a.getX() * b.getX();
   float y = a.getY() * b.getY();

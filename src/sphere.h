@@ -5,10 +5,10 @@
 
 class Sphere : public SceneObject {
 private:
-  chromeball::Vector center;
+  chromeball::Vector origin;
   float radius;
 
 public:
-  Sphere(const chromeball::Vector &ctr, float r, const chromeball::Color &c);
+  Sphere(const chromeball::Vector &o, float r, const chromeball::Color &c);
   float intersect(const Ray &r) const;
 };
