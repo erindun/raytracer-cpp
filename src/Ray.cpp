@@ -1,7 +1,7 @@
-#include "ray.h"
+#include "Ray.h"
 #include "Vector.h"
 using namespace chromeball;
 
-Ray::Ray(const Vector &o, const Vector &d) : origin(o), direction(d) {}
-Vector Ray::get_origin() const { return origin; }
-Vector Ray::get_direction() const { return direction; }
+Ray::Ray(const Vector &p, const Vector &d) : position{p}, direction{d} {}
+const Vector Ray::get_position() const { return position; }
+const Vector Ray::get_direction() const { return direction; }

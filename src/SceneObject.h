@@ -1,6 +1,6 @@
 #pragma once
+#include "Ray.h"
 #include "Vector.h"
-#include "ray.h"
 
 class SceneObject {
 private:
@@ -8,5 +8,6 @@ private:
 
 public:
   SceneObject(const chromeball::Color &c);
-  virtual float intersect(const Ray &r) const = 0;
+  const chromeball::Color get_color() const;
+  virtual float intersection(const Ray &r) const = 0;
 };
