@@ -3,12 +3,13 @@
 #include "SceneObject.h"
 #include "Vector.h"
 
-class Sphere : public SceneObject {
+class Plane : public SceneObject {
 private:
   chromeball::Vector position;
-  float radius;
+  chromeball::Vector norm_direction;
 
 public:
-  Sphere(const chromeball::Vector &p, float r, const chromeball::Color &c);
+  Plane(const chromeball::Vector &p, chromeball::Vector &d,
+        const chromeball::Color &c);
   float intersection(const Ray &r) const;
 };

@@ -2,7 +2,6 @@
 #include "Vector.h"
 #include "utils.h"
 #include <cmath>
-#include <vector>
 using namespace chromeball;
 
 Sphere::Sphere(const Vector &p, float r, const Color &c)
