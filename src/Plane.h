@@ -9,7 +9,7 @@ private:
   chromeball::Vector norm_direction;
 
 public:
-  Plane(const chromeball::Vector &p, chromeball::Vector &d,
+  Plane(const chromeball::Vector &p, const chromeball::Vector &d,
         const chromeball::Color &c);
   float intersection(const Ray &r) const;
 };
