@@ -8,16 +8,24 @@ Sphere::Sphere(const Vector &p, float r, const Color &c)
     : SceneObject{c}, position{p}, radius{r} {}
 
 float Sphere::intersection(const Ray &r) const {
-  // TODO
-  Vector a = r.get_position() - this->position;
-  float b = dot(a, r.get_direction());
-  float c = dot(a, a);
-  float f = pow(b, 2) + pow(this->radius, 2) - c;
+  Vector oc = r.get_position() - this->position;
+  float b = 2 * dot(r.get_direction(), oc);
+  float c = dot(oc, oc) - pow(this->radius, 2);
 
-  if (f < 0.0f) {
+  // a = 1, so it is left out of the formula.
+  float discriminant = pow(b, 2) - 4 * c;
+
+  if (discriminant < 0) {
     // No intersections were made.
-    return 0.0f;
-  }
+    return -1.0f;
+  } else {
+    // An intersection is made! Return the smallest t value where t > 0.
+    float tplus = (-b + sqrt(discriminant)) / 2.0f;
+    float tminus = (-b - sqrt(discriminant)) / 2.0f;
 
-  return 0.0f;
+    if (tminus > 0)
+      return tminus;
+    else
+      return tplus;
+  }
 }
