@@ -8,6 +8,7 @@ Sphere::Sphere(const Vector &p, float r, const Color &c)
     : SceneObject{c}, position{p}, radius{r} {}
 
 float Sphere::intersection(const Ray &r) const {
+  // TODO
   Vector a = r.get_position() - this->position;
   float b = dot(a, r.get_direction());
   float c = dot(a, a);
