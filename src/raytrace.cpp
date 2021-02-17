@@ -4,15 +4,24 @@
 #include "SceneObject.h"
 #include "Sphere.h"
 #include "Vector.h"
+#include <algorithm>
 #include <iostream>
+#include <map>
 #include <vector>
 using namespace chromeball;
 
 typedef std::vector<SceneObject *> Scene;
 
 Color Trace(const Ray &r, const Scene &s) {
-  // TODO
-  return Color{0, 0, 0};
+  std::map<float, SceneObject *> intersections;
+
+  for (auto object : s) {
+    float intersection = object->intersection(r);
+    if (intersection > 0)
+      intersections.insert({intersection, object});
+  }
+
+  return intersections.begin()->second->get_color();
 }
 
 int main() {
