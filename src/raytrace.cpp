@@ -42,7 +42,7 @@ int main() {
   Scene scene{&plane, &sphere};
 
   std::ofstream ppm("raytrace.ppm");
-  ppm << "p3" << std::endl << NX << " " << NY << std::endl;
+  ppm << "P3" << std::endl << NX << " " << NY << std::endl;
   ppm << 255 << std::endl;
 
   for (int y = 0; y < NY; y++) {
