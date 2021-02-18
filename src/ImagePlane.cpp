@@ -6,6 +6,6 @@ ImagePlane::ImagePlane(int nx, int ny) : nx{nx}, ny{ny} {
   data.resize(nx * ny);
 }
 
-Color ImagePlane::get(int i, int j) const { return data.at(i * nx + ny); }
+Color ImagePlane::get(int i, int j) const { return data.at(i + nx * j); }
 
-void ImagePlane::set(int i, int j, const Color &c) { data.at(i * nx + ny) = c; }
+void ImagePlane::set(int i, int j, const Color &c) { data.at(i + nx * j) = c; }

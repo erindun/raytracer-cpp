@@ -6,6 +6,8 @@ Camera::Camera(const chromeball::Vector &p, const chromeball::Vector &vd,
     : position{p}, view_direction{vd}, up_direction{ud}, fov{fov}, aspect_ratio{
                                                                        a} {}
 
+Vector Camera::get_position() const { return position; }
+
 Vector Camera::view(float x, float y) const {
   // TODO
   return Vector{0.0f, 0.0f, 0.0f};
