@@ -5,6 +5,7 @@
 #include "SceneObject.h"
 #include "Sphere.h"
 #include "Vector.h"
+#include "utils.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -50,8 +51,10 @@ int main() {
       Ray ray{camera.get_position(), direction};
       Color color = Trace(ray, scene);
       image.set(x, y, color);
-      ppm << image.get(x, y).r << " " << image.get(x, y).b << " "
-          << image.get(x, y).b << std::endl;
+      auto red = to_hex(image.get(x, y).r);
+      auto green = to_hex(image.get(x, y).b);
+      auto blue = to_hex(image.get(x, y).b);
+      ppm << red << " " << green << " " << blue << std::endl;
     }
   }
 }
