@@ -22,7 +22,7 @@ Vector cross(const Vector &a, const Vector &b) {
 float deg_to_rad(float deg) { return deg * M_PI / 180.0f; }
 
 /** Converts radian values into degrees. */
-float rad_to_deg(float deg) { return deg * 180.0f / M_PI; }
+float rad_to_deg(float rad) { return rad * 180.0f / M_PI; }
 
 /** Converts a 0-1 color value to its approximate hex value. */
 int to_hex(double color) { return color * 255; }
