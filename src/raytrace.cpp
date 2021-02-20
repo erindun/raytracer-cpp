@@ -26,7 +26,6 @@ Color Trace(const Ray &r, const Scene &s) {
       intersections.insert({intersect, object});
   }
 
-  return Color{0, 0, 0};
   return intersections.begin()->second->get_color();
 }
 
@@ -45,9 +44,9 @@ int main() {
   ppm << "P3" << std::endl << NX << " " << NY << std::endl;
   ppm << 255 << std::endl;
 
-  for (int y = 0; y < NY; y++) {
-    for (int x = 0; x < NX; x++) {
-      auto direction = camera.view(x, y);
+  for (float y = 0; y < NY; y++) {
+    for (float x = 0; x < NX; x++) {
+      auto direction = camera.view(x, y, NX, NY);
       Ray ray{camera.get_position(), direction};
       Color color = Trace(ray, scene);
       image.set(x, y, color);

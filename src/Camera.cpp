@@ -9,13 +9,16 @@ Camera::Camera(const chromeball::Vector &p, const chromeball::Vector &vd,
 
 Vector Camera::get_position() const { return position; }
 
-Vector Camera::view(float x, float y) const {
+Vector Camera::view(float x, float y, int nx, int ny) const {
   Vector right = cross(up_direction, view_direction);
   float fov_rad = deg_to_rad(fov);
-  float hfov_rad = 2 * atan(tan(fov_rad) / 2 * aspect_ratio);
+  float hfov_rad = 2 * atanf(tanf(fov_rad) / 2 * aspect_ratio);
   float hfov = rad_to_deg(hfov_rad);
   float vfov = fov / hfov;
+  float u = (x / nx - 1) * tanf(hfov / 2);
+  float v = (y / ny - 1) * tanf(vfov / 2);
+  Vector vx = u * right + v * up_direction;
 
-  // TODO
-  return Vector{0, 0, 0};
+  Vector dir = (vx + view_direction) / (vx + view_direction).magnitude();
+  return dir;
 }
