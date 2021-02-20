@@ -52,7 +52,7 @@ int main() {
       Color color = Trace(ray, scene);
       image.set(x, y, color);
       auto red = to_hex(image.get(x, y).r);
-      auto green = to_hex(image.get(x, y).b);
+      auto green = to_hex(image.get(x, y).g);
       auto blue = to_hex(image.get(x, y).b);
       ppm << red << " " << green << " " << blue << std::endl;
     }
