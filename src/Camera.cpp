@@ -1,5 +1,4 @@
 #include "Camera.h"
-#include "utils.h"
 #include <cmath>
 #include <iostream>
 using namespace chromeball;

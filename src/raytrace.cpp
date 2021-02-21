@@ -5,7 +5,6 @@
 #include "SceneObject.h"
 #include "Sphere.h"
 #include "Vector.h"
-#include "utils.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -17,6 +16,8 @@ const int NX = 1024;
 const int NY = 768;
 
 typedef std::vector<SceneObject *> Scene;
+
+int to_hex(double color) { return color * 255; }
 
 Color Trace(const Ray &r, const Scene &s) {
   std::map<float, SceneObject *> intersections;

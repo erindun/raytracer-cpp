@@ -1,6 +1,5 @@
 #include "Plane.h"
 #include "Vector.h"
-#include "utils.h"
 #include <cmath>
 using namespace chromeball;
 
