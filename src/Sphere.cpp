@@ -9,11 +9,11 @@ Sphere::Sphere(const Vector &p, float r, const Color &c)
 
 float Sphere::intersection(const Ray &r) const {
   Vector oc = r.get_position() - this->position;
-  float b = 2 * dot(r.get_direction(), oc);
-  float c = dot(oc, oc) - pow(this->radius, 2);
+  float b = 2 * (r.get_direction() * oc);
+  float c = (oc * oc) - (radius * radius);
 
   // a = 1, so it is left out of the formula.
-  float discriminant = pow(b, 2) - 4 * c;
+  float discriminant = (b * b) - (4 * c);
 
   if (discriminant < 0) {
     // No intersections were made.

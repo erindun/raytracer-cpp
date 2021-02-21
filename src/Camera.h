@@ -13,5 +13,5 @@ public:
   Camera(const chromeball::Vector &p, const chromeball::Vector &vd,
          const chromeball::Vector &ud, float fov, float a);
   chromeball::Vector get_position() const;
-  chromeball::Vector view(float x, float y, int nx, int ny) const;
+  chromeball::Vector view(float i, float j, int nx, int ny) const;
 };
