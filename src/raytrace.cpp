@@ -39,21 +39,21 @@ int main() {
                 Vector{0.0f, 1.0f, 0.0f}, 90.0f, 1.3333f};
 
   ImagePlane image{NX, NY};
-  Scene scene{&sphere};
+  Scene scene{&sphere, &plane};
 
   std::ofstream ppm("raytrace.ppm");
   ppm << "P3" << std::endl << NX << " " << NY << std::endl;
   ppm << 255 << std::endl;
 
-  for (float y = 0; y < NY; y++) {
-    for (float x = 0; x < NX; x++) {
-      auto direction = camera.view(x, y, NX, NY);
+  for (float j = 0; j < NY; j++) {
+    for (float i = 0; i < NX; i++) {
+      auto direction = camera.view(i, j, NX, NY);
       Ray ray{camera.get_position(), direction};
       Color color = Trace(ray, scene);
-      image.set(x, y, color);
-      auto red = to_hex(image.get(x, y).r);
-      auto green = to_hex(image.get(x, y).g);
-      auto blue = to_hex(image.get(x, y).b);
+      image.set(i, j, color);
+      auto red = to_hex(image.get(i, j).r);
+      auto green = to_hex(image.get(i, j).g);
+      auto blue = to_hex(image.get(i, j).b);
       ppm << red << " " << green << " " << blue << std::endl;
     }
   }
