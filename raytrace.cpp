@@ -4,6 +4,7 @@
 #include "Ray.h"
 #include "SceneObject.h"
 #include "Sphere.h"
+#include "Trace.h"
 #include "Vector.h"
 #include <algorithm>
 #include <fstream>
@@ -15,25 +16,7 @@ using namespace chromeball;
 const int NX = 1024;
 const int NY = 768;
 
-typedef std::vector<SceneObject *> Scene;
-
 int to_hex(double color) { return color * 255; }
-
-Color Trace(const Ray &r, const Scene &s) {
-  std::map<float, SceneObject *> intersections;
-
-  for (auto object : s) {
-    float intersect = object->intersection(r);
-    if (intersect > 0.0f)
-      intersections.insert({intersect, object});
-  }
-
-  if (intersections.empty()) {
-    return Color{0, 0, 0};
-  } else {
-    return intersections.begin()->second->get_color();
-  }
-}
 
 int main() {
   Plane plane{Vector{0.0f, 2.0f, 0.0f}, Vector{0.0f, 1.0f, 0.0f},
@@ -46,7 +29,7 @@ int main() {
   ImagePlane image{NX, NY};
   Scene scene{&plane, &sphere};
 
-  std::ofstream ppm("raytrace.ppm");
+  std::ofstream ppm("output.ppm");
   ppm << "P3" << std::endl << NX << " " << NY << std::endl;
   ppm << 255 << std::endl;
 

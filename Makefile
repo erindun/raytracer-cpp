@@ -12,7 +12,7 @@ build/%.o: %.cpp
 	${CXX} -o $@ $< -c ${CFLAGS}
 
 clean:
-		rm -rf ${TARGET} build raytrace.ppm
+		rm -rf ${TARGET} build output.ppm
 
 run: all
 	./${TARGET}
