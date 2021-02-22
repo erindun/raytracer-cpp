@@ -52,7 +52,9 @@ int main() {
 
   for (float j = 0; j < NY; j++) {
     for (float i = 0; i < NX; i++) {
-      auto direction = camera.view(i, j, NX, NY);
+      float x = i / NX;
+      float y = j / NY;
+      auto direction = camera.view(x, y);
       Ray ray{camera.get_position(), direction};
       Color color = Trace(ray, scene);
       image.set(i, j, color);
