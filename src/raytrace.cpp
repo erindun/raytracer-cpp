@@ -28,7 +28,11 @@ Color Trace(const Ray &r, const Scene &s) {
       intersections.insert({intersect, object});
   }
 
-  return intersections.begin()->second->get_color();
+  if (intersections.empty()) {
+    return Color{0, 0, 0};
+  } else {
+    return intersections.begin()->second->get_color();
+  }
 }
 
 int main() {
