@@ -19,8 +19,8 @@ float Sphere::intersection(const Ray &r) const {
     return -1.0f;
   } else {
     // An intersection is made! Return the smallest t value where t > 0.
-    float t1 = (-b + sqrt(discriminant)) / (2.0f * a);
-    float t2 = (-b - sqrt(discriminant)) / (2.0f * a);
+    float t1 = (-b + sqrt(discriminant)) / (2 * a);
+    float t2 = (-b - sqrt(discriminant)) / (2 * a);
 
     if (t1 > 0)
       return t1;

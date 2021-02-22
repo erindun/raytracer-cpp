@@ -44,7 +44,7 @@ int main() {
                 Vector{0.0f, 1.0f, 0.0f}, 90.0f, 1.3333f};
 
   ImagePlane image{NX, NY};
-  Scene scene{&sphere, &plane};
+  Scene scene{&plane, &sphere};
 
   std::ofstream ppm("raytrace.ppm");
   ppm << "P3" << std::endl << NX << " " << NY << std::endl;
