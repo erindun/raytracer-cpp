@@ -54,10 +54,11 @@ int main() {
     for (float i = 0; i < NX; i++) {
       float x = i / NX;
       float y = j / NY;
-      auto direction = camera.view(x, y);
+      Vector direction = camera.view(x, y);
       Ray ray{camera.get_position(), direction};
       Color color = Trace(ray, scene);
       image.set(i, j, color);
+
       auto red = to_hex(image.get(i, j).r);
       auto green = to_hex(image.get(i, j).g);
       auto blue = to_hex(image.get(i, j).b);
