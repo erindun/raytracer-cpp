@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 3.14)
-set(CMAKE_BUILD_TYPE Debug)
-project(raytrace)
-add_executable(raytrace raytrace.cpp Ray.cpp SceneObject.cpp Sphere.cpp Plane.cpp ImagePlane.cpp Camera.cpp)
-target_include_directories(raytrace PUBLIC include)
