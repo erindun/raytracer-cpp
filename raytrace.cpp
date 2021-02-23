@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "ImagePlane.h"
 #include "Plane.h"
+#include "PointLight.h"
 #include "Ray.h"
 #include "SceneObject.h"
 #include "Sphere.h"
@@ -19,15 +20,25 @@ const int NY = 768;
 int to_hex(double color) { return color * 255; }
 
 int main() {
-  Plane plane{Vector{0.0f, 2.0f, 0.0f}, Vector{0.0f, 1.0f, 0.0f},
-              Color{0, 0.5, 1}};
-  Sphere sphere{Vector{1.0f, 2.0f, 15.0f}, 3.0f, Color{0.5, 1.0, 0.0}};
+  Plane plane0{Vector{0.0f, 2.0f, 0.0f}, Vector{0.0f, -1.0f, 0.0f},
+               Color{1, 1, 1}};
+  Plane plane1{Vector{0.0f, -2.0f, 0.0f}, Vector{0.0f, 1.0f, 0.0f},
+               Color{1, 1, 1}};
+  Plane plane2{Vector{-2.0f, 0.0f, 0.0f}, Vector{1.0f, 0.0f, 0.0f},
+               Color{1, 0, 0}};
+  Plane plane3{Vector{2.0f, 0.0f, 0.0f}, Vector{-1.0f, 0.0f, 0.0f},
+               Color{0, 1, 0}};
+  Plane plane4{Vector{0.0f, 0.0f, 10.0f}, Vector{0.0f, 0.0f, -1.0f},
+               Color{1, 1, 1}};
+  Sphere sphere{Vector{1.1f, 1.25f, 7.0f}, 1.0f, Color{0.5, 0.5, 0.5}};
 
   Camera camera{Vector{0.0f, 0.0f, 0.0f}, Vector{0.0f, 0.0f, 1.0f},
                 Vector{0.0f, 1.0f, 0.0f}, 90.0f, 1.3333f};
 
+  PointLight light{Vector{-1.0f, -1.0f, 7.0f}, Color{2, 2, 2}};
+
   ImagePlane image{NX, NY};
-  Scene scene{&plane, &sphere};
+  Scene scene{&plane0, &plane1, &plane2, &plane3, &plane4, &sphere};
 
   std::ofstream ppm("output.ppm");
   ppm << "P3" << std::endl << NX << " " << NY << std::endl;
