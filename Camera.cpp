@@ -6,9 +6,9 @@ Camera::Camera(const chromeball::Vector &p, const chromeball::Vector &v,
                const chromeball::Vector &u, float fov, float a)
     : position{p}, view_direction{v}, up{u}, fov{fov}, aspect{a} {}
 
-Vector Camera::get_position() const { return position; }
+const Vector &Camera::get_position() const { return position; }
 
-Vector Camera::view(float x, float y) const {
+const Vector Camera::view(float x, float y) const {
   Vector right = up ^ view_direction;
   float fov_rad = fov * M_PI / 180;
 

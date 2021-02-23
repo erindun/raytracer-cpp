@@ -8,6 +8,6 @@ private:
 
 public:
   Ray(const chromeball::Vector &p, const chromeball::Vector &d);
-  const chromeball::Vector get_position() const;
-  const chromeball::Vector get_direction() const;
+  const chromeball::Vector &get_position() const;
+  const chromeball::Vector &get_direction() const;
 };
