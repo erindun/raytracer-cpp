@@ -7,18 +7,16 @@ Plane::Plane(const Vector &p, const Vector &d, const Color &c)
     : SceneObject{c}, position{p}, norm_direction{d} {}
 
 float Plane::intersection(const Ray &r) const {
-  float dn = r.get_direction() * this->norm_direction;
-  if (dn == 0) {
-    // Ray is parallel to plane (no intersection).
-    return -1.0f;
-  } else {
-    float t =
-        (-(r.get_position() - this->position) * this->norm_direction) / dn;
+  float denom = norm_direction * r.get_direction();
+  if (fabs(denom) > 1e-6) {
+    Vector difference = position - r.get_position();
+    float t = (difference * norm_direction) / denom;
 
-    if (t < 0)
-      // Not an intersection.
-      return -1.0f;
-    else
+    if (t > 1e-6) {
       return t;
+    }
   }
+
+  // No intersection.
+  return -1.0f;
 }
