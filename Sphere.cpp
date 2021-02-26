@@ -1,5 +1,6 @@
 #include "Sphere.h"
 #include "Vector.h"
+#include <algorithm>
 #include <cmath>
 using namespace chromeball;
 
@@ -23,7 +24,9 @@ float Sphere::intersection(const Ray &r) const {
     float t1 = (-b + sqrt(discriminant)) / (2 * a);
     float t2 = (-b - sqrt(discriminant)) / (2 * a);
 
-    if (t1 > 0)
+    if (t1 > 0 && t2 > 0)
+      return std::min(t1, t2);
+    else if (t1 > 0)
       return t1;
     else
       return t2;
